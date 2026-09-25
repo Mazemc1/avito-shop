@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#7c3aed">
+<title>Магазин</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <div class="logo" id="logo">М</div>
+      <div class="brand-text">
+        <div class="shop-name" id="shopName">Магазин</div>
+      </div>
+    </div>
+    <div class="status">
+      <span class="dot dot-ok"></span>
+      <span id="statusText">Загрузка…</span>
+    </div>
+    <a class="btn cart-link" href="#/cart">Корзина <span class="cart-badge" id="cartCount">0</span></a>
+  </div>
+</header>
+
+<main class="wrap" id="gridSection">
+  <div class="controls">
+    <input id="search" type="search" placeholder="Поиск: бренд, модель, деталь…" autocomplete="off">
+    <select id="sort">
+      <option value="date">Сначала новые</option>
+      <option value="name_asc">Наименование: А-Я</option>
+      <option value="name_desc">Наименование: Я-А</option>
+      <option value="brand_asc">Бренд: А-Я</option>
+      <option value="brand_desc">Бренд: Я-А</option>
+      <option value="price_asc">Цена: по возрастанию</option>
+      <option value="price_desc">Цена: по убыванию</option>
+    </select>
+    <label class="check"><input type="checkbox" id="showInactive" checked> Показывать снятые</label>
+    <span class="count" id="countLabel"></span>
+  </div>
+  <div class="brand-chips" id="brandChips"></div>
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty" hidden>Ничего не найдено. Попробуйте изменить запрос или выбрать другой бренд.</div>
+</main>
+
+<main class="wrap detail-wrap" id="detailSection" hidden>
+  <div class="detail-top"><a class="back-link" href="#/">&larr; Все товары</a></div>
+  <div id="detail" class="detail-card"></div>
+  <div id="notfound" class="empty" hidden>Товар не найден.</div>
+</main>
+
+<main class="wrap cart-wrap" id="cartSection" hidden>
+  <div class="detail-top"><a class="back-link" href="#/">&larr; Все товары</a></div>
+  <h1 class="cart-title">Корзина</h1>
+  <div id="cartList"></div>
+  <div id="cartEmpty" class="empty" hidden>Корзина пуста. <a href="#/">Перейти к товарам</a></div>
+  <div id="cartSummary" hidden>
+    <div class="cart-total" id="cartTotal"></div>
+    <form id="orderForm" class="order-form" novalidate>
+      <h2>Оформление заказа</h2>
+      <label>Ваше имя
+        <input id="custName" type="text" maxlength="100" placeholder="Как к вам обращаться">
+      </label>
+      <label>Телефон
+        <input id="custPhone" type="tel" placeholder="+7 999 123-45-67">
+      </label>
+      <label>Комментарий
+        <textarea id="custComment" maxlength="500" placeholder="Необязательно: доставка, самовывоз, вопросы"></textarea>
+      </label>
+      <div class="form-error" id="formError" hidden></div>
+      <button type="submit" class="btn btn-primary order-submit" id="submitBtn">Оформить заказ</button>
+    </form>
+  </div>
+  <div id="orderSuccess" class="order-success" hidden>
+    <h2>Заказ принят!</h2>
+    <p>Мы свяжемся с вами по указанному телефону для подтверждения заказа.</p>
+    <a class="btn btn-primary" href="#/">Вернуться в каталог</a>
+  </div>
+</main>
+
+<footer class="wrap footer">
+  <span id="footNote"></span>
+</footer>
+
+<div id="toast" class="toast" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
